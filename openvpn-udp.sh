@@ -28,10 +28,10 @@ if [ -e /etc/openvpn/server.conf ]; then
 	while :
 	do
 	clear
-		echo "Looks like OpenVPN is already installed"
-		echo "What do you want to do?"
+		echo "Kelihatannya udah install OpenVpn"
+		echo "Jadi Mau Gimana?"
 		echo ""
-		echo "1) Remove OpenVPN"
+		echo "1) Hapus OpenVPN"
 		echo "2) Exit"
 		echo ""
 		read -p "Select an option [1-4]:" option
@@ -43,7 +43,7 @@ if [ -e /etc/openvpn/server.conf ]; then
 			sed -i '/--dport 53 -j REDIRECT --to-port 1194/d' /etc/rc.local
 			sed -i '/iptables -t nat -A POSTROUTING -s 10.8.0.0/d' /etc/rc.local
 			echo ""
-			echo "OpenVPN removed!"
+			echo "OpenVPN Terhapus!"
 			exit
 			;;
 			2) exit;;
@@ -51,7 +51,7 @@ if [ -e /etc/openvpn/server.conf ]; then
 	done
 else
 	echo 'Selamat Datang di quick OpenVPN "road warrior" installer'
-	echo "Modifikasi Oleh SecureMember"
+	echo "Modifikasi Oleh SecureMember Admin Salsha ^_^"
 	echo ""
 	# OpenVPN setup and first user creation
 	echo "Pertama-tama saya perlu tahu alamat IPv4 yang ingin diinstall OpenVPN"
@@ -154,7 +154,7 @@ END
       		iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -j SNAT --to $IP
       		iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o eth0 -j MASQUERADE
 	fi	
-	sed -i "/# By default this script does nothing./a\ip10tables -t nat -A POSTROUTING -s 192.168.100.0/24 -j SNAT --to $IP" /etc/rc.local
+	sed -i "iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o eth0 -j MASQUERADE" /etc/rc.local
 	iptables-save
 	# And finally, restart OpenVPN
 	/etc/init.d/openvpn restart
@@ -214,7 +214,7 @@ END
 	cd ~/
 	rm -rf ovpn-$CLIENT
 	echo ""
-	echo "Selesai!"
+	echo "Selesai! ~ Cieee ~"
 	echo ""
-	echo "Your client config is available at ~/ovpn-$CLIENT.tar.gz"
+	echo "Config ada dalam server ~/ovpn-$CLIENT.tar.gz"
 fi
