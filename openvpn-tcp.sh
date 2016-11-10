@@ -63,11 +63,11 @@ else
 	echo ""
 	echo "Apakah Anda ingin OpenVPN akan tersedia pada port 53 juga?"
 	echo "Hal ini dapat berguna untuk menghubungkan ke restrictive networks"
-	read -p "Listen port 53 [y/n]:" -e -i y ALTPORT
+	read -p "Listen port 53 [y/n]:" -e -i n ALTPORT
 	echo ""
 	echo "Sebutkan namamu untuk cert klien"
 	echo "Silakan, gunakan satu kata saja, tidak ada karakter khusus"
-	read -p "Nama Client: " -e -i client CLIENT
+	read -p "Nama Client: " -e -i secureconfig CLIENT
 	echo ""
 	echo "Oke, itu semua saya butuhkan. Kami siap untuk setup OpenVPN server Anda sekarang"
 	read -n1 -r -p "Tekan sembarang tombol untuk melanjutkan ..."
