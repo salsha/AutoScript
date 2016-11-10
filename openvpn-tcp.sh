@@ -115,7 +115,7 @@ mssfix 1450
 ca /etc/openvpn/ca.crt
 cert /etc/openvpn/server.crt
 key /etc/openvpn/server.key
-dh /etc/openvpn/dh1024.pem
+dh /etc/openvpn/dh2048.pem
 plugin /usr/lib/openvpn/openvpn-auth-pam.so /etc/pam.d/login
 client-cert-not-required
 username-as-common-name
@@ -136,7 +136,7 @@ verb 3
 END
 
 	cd /etc/openvpn/easy-rsa/2.0/keys
-	cp ca.crt ca.key dh1024.pem server.crt server.key /etc/openvpn
+	cp ca.crt ca.key dh2048.pem server.crt server.key /etc/openvpn
 	sed -i "s/port 1194/port $PORT/" /etc/openvpn/server.conf
 	# Listen at port 53 too if user wants that
 	if [ $ALTPORT = 'y' ]; then
