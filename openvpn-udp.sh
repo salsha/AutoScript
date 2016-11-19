@@ -59,11 +59,11 @@ else
 	read -p "IP address: " -e -i $IP IP
 	echo ""
 	echo "Port untuk OpenVPN?"
-	read -p "Port: " -e -i 1194 PORT
+	read -p "Port: " -e -i 25000 PORT
 	echo ""
 	echo "Apakah Anda ingin OpenVPN akan tersedia pada port 53 juga?"
 	echo "Hal ini dapat berguna untuk menghubungkan ke restrictive networks"
-	read -p "Listen port 53 [y/n]:" -e -i y ALTPORT
+	read -p "Listen port 53 [y/n]:" -e -i n ALTPORT
 	echo ""
 	echo "Sebutkan namamu untuk cert klien"
 	echo "Silakan, gunakan satu kata saja, tidak ada karakter khusus"
@@ -106,7 +106,7 @@ else
 	. /etc/openvpn/easy-rsa/2.0/build-dh
 	# Let's configure the server
 cat > /etc/openvpn/server.conf <<-END
-port 1194
+port 25000
 proto udp
 dev tun
 tun-mtu 1500
