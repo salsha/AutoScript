@@ -148,8 +148,8 @@ END
 	# Avoid an unneeded reboot
 	echo 1 > /proc/sys/net/ipv4/ip_forward
 	# Set iptables
-	if [ $(ifconfig | cut -c 1-8 | sort | uniq -u | grep venet0 | grep -v venet0:) = "venet0" ];then
-      		iptables -t nat -A POSTROUTING -o venet0 -j SNAT --to-source $IP
+	if [ $(ifconfig | cut -c 1-8 | sort | uniq -u | grep eth0 | grep -v eth0:) = "eth0" ];then
+      		iptables -t nat -A POSTROUTING -o eth0 -j SNAT --to-source $IP
 	else
       		iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -j SNAT --to $IP
       		iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o eth0 -j MASQUERADE
